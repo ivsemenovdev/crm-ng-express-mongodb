@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -7,7 +8,16 @@ const analyticsRoutes = require('./routes/analytics');
 const categoryRoutes = require('./routes/category');
 const orderRoutes = require('./routes/order');
 const positionRoutes = require('./routes/position');
+const {mongoURI} = require("./config/keys");
 const app = express();
+
+mongoose.connect(mongoURI)
+    .then (() => {
+        console.log('MongoDB connected');
+    })
+    .catch (err => {
+        console.log(err);
+    })
 
 app.use(morgan('dev'));
 app.use(cors());
