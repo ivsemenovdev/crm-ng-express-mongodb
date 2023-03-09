@@ -1,10 +1,10 @@
-const User = require('../models/User')
+const bcrypt = require('bcryptjs');
+const User = require('../models/User');
 
 module.exports.login = function (req, res) {
     res.status(200).json({
         login: {
-            email: req.body.email,
-            password: req.body.password
+            email: req.body.email, password: req.body.password
         }
     });
 }
@@ -31,9 +31,12 @@ module.exports.register = async function (req, res) {
         });
     } else {
         //Создаём пользователя
+        const key = bcrypt.generateKeySync(10);
+        const password = req.body.password;
+
         const user = new User({
             email: req.body.email,
-            password: req.body.password
+            password: bcrypt.hashSync(password, key)
         });
 
         //Записываем пользователя в БД
@@ -44,7 +47,6 @@ module.exports.register = async function (req, res) {
         } catch (e) {
             //обработка ошибки
         }
-
 
     }
 
