@@ -31,12 +31,12 @@ module.exports.register = async function (req, res) {
         });
     } else {
         //Создаём пользователя
-        const key = bcrypt.generateKeySync(10);
+        const salt = bcrypt.genSaltSync(10);
         const password = req.body.password;
 
         const user = new User({
             email: req.body.email,
-            password: bcrypt.hashSync(password, key)
+            password: bcrypt.hashSync(password, salt)
         });
 
         //Записываем пользователя в БД
