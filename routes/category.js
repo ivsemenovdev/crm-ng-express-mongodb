@@ -11,6 +11,6 @@ router.delete('/:id', controller.remove);
 // localhost:3000/api/category
 router.post('/', controller.create);
 // localhost:3000/api/category:id
-router.post('/:id', controller.update);
+router.patch('/:id', controller.update);
 
 module.exports = router
