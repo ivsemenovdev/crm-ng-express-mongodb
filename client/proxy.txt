@@ -1,0 +1,23 @@
+Backend
+
+http://localhost:3000/api/auth/login
+http://localhost:3000/api/category
+...
+
+Frontend
+
+http://localhost:3000/api/auth/login
+http://localhost:3000/api/category
+
+Что если сервер переехал?
+Для этого служит инструмент proxy
+С фронта запросы не будем отправлять запросы на полный url  адрес
+Запросы будем отправлять на адрес такого типа
+
+/api/auth/login
+/api/category
+...
+
+будем добавлять к каждому запросу url адрес с помощью proxy
+
+
