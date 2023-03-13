@@ -24,6 +24,8 @@ app.use(passport.initialize({}));
 require('./middleware/passport')(passport);
 
 app.use(morgan('dev'));
+//доступ к картинке из браузера
+app.use('/uploads', express.static('uploads'));
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
