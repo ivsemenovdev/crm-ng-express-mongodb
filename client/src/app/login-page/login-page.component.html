@@ -10,15 +10,15 @@
         id="email"
         type="email"
         formControlName="email"
-        [ngClass]="{'invalid': form.get('email')?.invalid && form.get('email')?.touched}"
+        [ngClass]="{'invalid': email?.invalid && email?.touched}"
       >
       <label for="email">Email:</label>
       <span
         class="helper-text red-text"
-        *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
-      >Error
-        <!--        <span *ngIf="form.get('email').errors['required']">E-mail не должен быть пустым</span>-->
-        <!--        <span *ngIf="form.get('email').errors['email']">Введите корректный E-mail</span>-->
+        *ngIf="email?.invalid && email?.touched"
+      >
+        <span *ngIf="email?.errors?.['required']">E-mail не должен быть пустым</span>
+        <span *ngIf="email?.errors?.['email']">Введите корректный E-mail</span>
       </span>
     </div>
     <div class="input-field">
@@ -26,16 +26,15 @@
         id="password"
         type="password"
         formControlName="password"
-        [ngClass]="{'invalid': form.get('password')?.invalid && form.get('password')?.touched}"
+        [ngClass]="{'invalid': password?.invalid && password?.touched}"
       >
       <label for="password">Пароль:</label>
       <span
         class="helper-text red-text"
-        *ngIf="form.get('password')?.invalid && form.get('password')?.touched"
-      >Error
-<!--    <span *ngIf="form.get('password').errors['required']">Пароль не должен быть пустым</span>-->
-<!--    <span *ngIf="form.get('password').errors['minLength'] && form.get('password').errors['minLength']['requiredLength']">Пароль должен быть больше {{form.get('password).errors['minLength']['requiredLength']}} символов. Сейчас {{form.get('password').errors['minLength']['actualLength']}}
-</span>-->
+        *ngIf="password?.invalid && password?.touched"
+      >
+        <span *ngIf="password?.errors?.['required']">Пароль не должен быть пустым</span>
+        <span *ngIf="password?.errors?.['minlength']">Пароль должен быть больше {{password?.errors?.['minlength']['requiredLength']}} символов.</span>
       </span>
     </div>
   </div>
