@@ -8,6 +8,8 @@ import {LoginPageComponent} from './login-page/login-page.component';
 import {AuthLayoutComponent} from './layouts/auth-layout/auth-layout.component';
 import {SiteLayoutComponent} from './layouts/site-layout/site-layout.component';
 import {RegisterPageComponent} from './register-page/register-page.component';
+import {HttpClientModule} from "@angular/common/http";
+import {AuthService} from "./services/auth.service";
 
 @NgModule({
   declarations: [
@@ -21,9 +23,10 @@ import {RegisterPageComponent} from './register-page/register-page.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
